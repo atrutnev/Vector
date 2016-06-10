@@ -23,11 +23,7 @@ namespace Vector
             this.Y = y;
             this.length = Math.Sqrt(Math.Pow((dynamic)x, 2) + Math.Pow((dynamic)y, 2));
         }
-
-        public Vector()
-        {
-        }
-
+                
         //Формат отображения
         public override string ToString()
         {

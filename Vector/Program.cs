@@ -10,7 +10,6 @@ namespace Vector
     {
         static void Main(string[] args)
         {
-            //List<int> vectors = new List<int>();
             while (true)
             {
                 //Шапка
@@ -19,11 +18,9 @@ namespace Vector
                 Console.WriteLine((new string('=', 79)));
                 Console.WriteLine("\t\t\tПрограмма векторных операций");
                 Console.WriteLine((new string('=', 79)));
-                Console.ForegroundColor = ConsoleColor.White;
-
+                
                 //Вызов генератора векторов и формирование двух списков: обычного и отсортированного с выводом каждого на экран
                 var g = new Generator<int>();
-                g.ToList();
                 var sortedList = g.OrderBy(o => o.length).ToList();
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("Список сгенерированных векторов:");
@@ -46,17 +43,16 @@ namespace Vector
                 //Случайный выбор двух векторов из списка для выполнения операций над ними
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("Выбор двух векторов из списка для операций над ними: ");
-                //Не додумался, как организовать случайный выбор из List'а, поэтому перегнал список в массив
-                var takeVector = g.ToArray();
+                var takeVector = g.ToList();
                 int indexFirstVector;
                 int indexSecondVector;
                 Random rnd = new Random();
-                indexFirstVector = rnd.Next(0, takeVector.Length);
+                indexFirstVector = rnd.Next(0, takeVector.Count());
                 //Цикл "do - while" добавлен для исключения случайного выбора одного и того же вектора
                 //Однако в этом случае практически невозможно добиться равенства векторов
                 do
                 {
-                    indexSecondVector = rnd.Next(0, takeVector.Length);
+                    indexSecondVector = rnd.Next(0, takeVector.Count());
                 }   while (indexSecondVector == indexFirstVector);
                 Vector<int> firstVector = takeVector[indexFirstVector];
                 Vector<int> secondVector = takeVector[indexSecondVector];
